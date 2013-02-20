@@ -5,4 +5,4 @@ CASE_SENSITIVE="true"
 plugins=(git osx github svn brew themes)
 source $ZSH/oh-my-zsh.sh
 
-[ -f "$HOME/.initrc" ] && source $HOME/.initrc
+source $HOME/.initrc
