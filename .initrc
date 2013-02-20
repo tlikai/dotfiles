@@ -1,4 +1,10 @@
 export EDITOR=vim
+export TERM=xterm-256color
 export PATH=$HOME/.bin/:/Development/bin/:$PATH
 
-[ -f "$HOME/.aliases" ] && source $HOME/.aliases
+if [ -d $HOME/.dircolors ]; then
+    eval `dircolors -b $HOME/.dircolors/dircolors.256dark`
+    alias ls='ls --color -hF'
+fi
+
+source $HOME/.aliases
