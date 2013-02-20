@@ -5,7 +5,4 @@ CASE_SENSITIVE="true"
 plugins=(git osx github svn brew themes)
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR=vim
-export PATH=$HOME/.bin/:$PATH
-
-[ -f "$HOME/.aliases" ] && source $HOME/.aliases
+[ -f "$HOME/.initrc" ] && source $HOME/.initrc
