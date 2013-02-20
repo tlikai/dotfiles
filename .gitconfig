@@ -1,0 +1,15 @@
+[user]
+	name = likai
+	email = youyuge@gmail.com
+
+[color]
+    ui = auto
+
+[merge]
+    log = true
+
+[diff]
+      tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+      cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
