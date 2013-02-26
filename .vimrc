@@ -1,9 +1,7 @@
 set nocompatible
 
 " vundle configure
-filetype off
 if (has("win32") || has("win64"))
-    source $VIMRUNTIME/mswin.vim
     let $HOME=$USERPROFILE
 endif
 let $VIMFILES=$HOME.'/.vim'
@@ -13,17 +11,17 @@ call vundle#rc()
 " require
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'L9'
 
 " complete
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimshell'
 Bundle 'ZenCoding.vim'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-surround'
 
 " other
 Bundle 'godlygeek/tabular'
@@ -34,14 +32,13 @@ Bundle 'Lokaltog/vim-easymotion'
 " file
 Bundle 'The-NERD-tree'
 Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'FuzzyFinder'
 Bundle 'mru.vim'
-Bundle 'yii.vim'
 
 " syntax
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-markdown'
-Bundle 'phpvim'
+Bundle 'vim-scripts/phpvim'
+Bundle 'othree/html5.vim'
 
 " colorscheme
 Bundle 'jelera/vim-powerline'
@@ -86,8 +83,8 @@ set sidescrolloff=20
 " search
 set magic
 set incsearch
-set hlsearch
 set ignorecase
+set nohlsearch
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
 set noerrorbells
 set matchpairs+=<:>
@@ -136,6 +133,21 @@ endif
 if exists('+breakindent')
     set breakindent
 endif
+
+" maps
+let mapleader = ','
+noremap <leader>. :NERDTreeToggle<CR>
+noremap <leader>t :TlistToggle<CR>
+noremap <leader>h :MRU<CR>
+noremap <leader>f :CommandT<CR>
+noremap <leader>rc :e $MYVIMRC<CR>
+noremap <leader>rrc :source $MYVIMRC<CR>
+noremap <leader>sh :ConqueTermSplit bash<CR>
+noremap <leader>ct :!ctags_php .<CR>
+noremap <leader>cs :noh<CR>
+noremap <leader>ss :%s/\s\+$//e<CR>
+noremap <leader>W :w !sudo tee %<CR>
+noremap <C-Q> <C-V>
 
 " Plugin configure
 
@@ -187,22 +199,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" maps
-let mapleader = ','
-let g:mapleader = ','
-noremap <leader>. :NERDTreeToggle<CR>
-noremap <leader>t :TlistToggle<CR>
-noremap <leader>h :MRU<CR>
-noremap <leader>f :CommandT<CR>
-noremap <leader>rc :e $MYVIMRC<CR>
-noremap <leader>rrc :source $MYVIMRC<CR>
-noremap <leader>sh :ConqueTermSplit bash<CR>
-noremap <leader>ct :!ctags_php .<CR>
-noremap <leader>cs :noh<CR>
-noremap <C-V> <C-Q>
-noremap <leader>W :w !sudo tee %<CR>
-noremap <leader>ss :%s/\s\+$//e<CR>
-
-" load template on new
+" load template
 autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
 autocmd BufNewFile *.html  0r $VIMFILES/template/template.html
