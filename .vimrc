@@ -23,6 +23,7 @@ Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
 Bundle 'ZenCoding.vim'
+Bundle 'tomtom/tcomment_vim'
 
 " other
 Bundle 'godlygeek/tabular'
