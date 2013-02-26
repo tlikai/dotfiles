@@ -17,25 +17,25 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'L9'
 
-" code
+" complete
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimproc'
+Bundle 'ZenCoding.vim'
+
+" other
 Bundle 'godlygeek/tabular'
 Bundle 'rosenfeld/conque-term'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
-Bundle "garbas/vim-snipmate"
-Bundle 'ZenCoding.vim'
 Bundle 'taglist.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'matchit.zip'
 Bundle 'Lokaltog/vim-easymotion'
 
 " file
 Bundle 'The-NERD-tree'
+Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'FuzzyFinder'
 Bundle 'mru.vim'
+Bundle 'yii.vim'
 
 " syntax
 Bundle 'groenewege/vim-less'
@@ -160,7 +160,6 @@ let g:user_zen_settings={
 let g:Powerline_symbols='fancy'
 
 " autocomplete
-let g:acp_enableAtStartup=0
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_min_syntax_length=3
@@ -172,26 +171,33 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " taglist
 set tags=$HOME/.tags
-set tags+=$PWD/tags
+set tags+=$PWD/tagc
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_Auto_Update = 1
 
+" neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " maps
 let mapleader = ','
 let g:mapleader = ','
-nmap <tab> v>
-nmap <s-tab> v<
-nmap <leader>. :NERDTreeToggle<CR>
-nmap <leader>t :TlistToggle<CR>
-nmap <leader>h :MRU<CR>
-nmap <leader>f :FufFile<CR>
-nmap <leader>fd :FufDir<CR>
-nmap <leader>vimrc :e $HOME/vimrc<CR>
-nmap <leader>bash :ConqueTermSplit bash<CR>
-nmap <leader>ct :!ctags -R ./<CR>
-nmap <leader>cs :noh<CR>
+noremap <leader>. :NERDTreeToggle<CR>
+noremap <leader>t :TlistToggle<CR>
+noremap <leader>h :MRU<CR>
+noremap <leader>f :CommandT<CR>
+noremap <leader>rc :e $MYVIMRC<CR>
+noremap <leader>rrc :source $MYVIMRC<CR>
+noremap <leader>sh :ConqueTermSplit bash<CR>
+noremap <leader>ct :!ctags_php .<CR>
+noremap <leader>cs :noh<CR>
 noremap <C-V> <C-Q>
 noremap <leader>W :w !sudo tee %<CR>
 noremap <leader>ss :%s/\s\+$//e<CR>
