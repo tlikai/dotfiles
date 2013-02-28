@@ -28,6 +28,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'rosenfeld/conque-term'
 Bundle 'taglist.vim'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'vim-scripts/matchit.zip'
 
 " file
 Bundle 'The-NERD-tree'
