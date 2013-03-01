@@ -62,9 +62,6 @@ set number
 set numberwidth=4
 set title
 set hidden
-set noimdisable
-set iminsert=0
-set imsearch=0
 set nostartofline
 set scrolljump=10
 set foldenable
@@ -80,6 +77,11 @@ set showcmd
 set cursorline
 set sidescrolloff=20
 "set pumheight=10
+
+" ime
+"set noimdisable
+set iminsert=0
+set imsearch=0
 
 " search
 set magic
