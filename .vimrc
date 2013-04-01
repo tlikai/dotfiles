@@ -40,6 +40,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/phpvim'
 Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
 
 " colorscheme
 Bundle 'jelera/vim-powerline'
@@ -201,6 +202,11 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" vim-javascript
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " load template
 autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
