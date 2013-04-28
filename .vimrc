@@ -131,7 +131,7 @@ if has('gui_running')
     set guioptions-=T
     set guioptions-=c
     set guioptions-=m
-    set guifont=Monaco\ for\ Powerline:h12,Monaco:h12
+    set guifont=Monaco\ for\ Powerline:h14,Monaco:h14
 endif
 
 if exists('+breakindent')
@@ -188,7 +188,7 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " taglist
 set tags=$HOME/.tags
-set tags+=$PWD/tagc
+set tags+=$PWD/tags
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
