@@ -211,3 +211,6 @@ let g:html_indent_style1 = "inc"
 " load template
 autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
 autocmd BufNewFile *.html  0r $VIMFILES/template/template.html
+
+" compiler
+autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
