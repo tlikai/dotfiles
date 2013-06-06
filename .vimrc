@@ -29,6 +29,8 @@ Bundle 'rosenfeld/conque-term'
 Bundle 'taglist.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-scripts/matchit.zip'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " file
 Bundle 'The-NERD-tree'
@@ -41,6 +43,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/phpvim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic'
 
 " colorscheme
 Bundle 'jelera/vim-powerline'
