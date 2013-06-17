@@ -28,13 +28,13 @@ Bundle 'godlygeek/tabular'
 Bundle 'rosenfeld/conque-term'
 Bundle 'taglist.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'vim-scripts/matchit.zip'
+Bundle 'matchit.zip'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 
 " file
-Bundle 'The-NERD-tree'
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'scrooloose/nerdtree'
+Bundle 'wincent/Command-T'
 Bundle 'mru.vim'
 
 " syntax
