@@ -34,7 +34,7 @@ Bundle 'rizzatti/dash.vim'
 
 " file
 Bundle 'scrooloose/nerdtree'
-Bundle 'wincent/Command-T'
+Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'mru.vim'
 
 " syntax
