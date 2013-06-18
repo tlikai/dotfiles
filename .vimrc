@@ -169,6 +169,12 @@ let g:NERDTreeWinPos='left'
 let g:NERDTreeWinSize=40
 let g:NERDTreeChDirMode=2
 
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_map = '<C-P>'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'
+
 " Zencoding
 let g:user_zen_settings={
 \    'php' : {
