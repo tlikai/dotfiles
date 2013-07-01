@@ -31,6 +31,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'matchit.zip'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'Yggdroot/indentLine'
 
 " file
 Bundle 'scrooloose/nerdtree'
@@ -48,16 +49,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 
 " colorscheme
-Bundle 'jelera/vim-powerline'
-Bundle 'jelera/vim-nazca-colorscheme'
-Bundle 'jelera/vim-gummybears-colorscheme'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'Railscasts-Theme-GUIand256color'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'peaksea'
-Bundle 'Zenburn'
 Bundle 'tango.vim'
 
 " global
@@ -83,6 +77,7 @@ set showcmd
 set cursorline
 set sidescrolloff=20
 "set pumheight=10
+set clipboard=unnamed
 
 " ime
 "set noimdisable
@@ -133,10 +128,11 @@ set background=dark
 colorscheme solarized
 
 if has('gui_running')
+    set background=light
     set guioptions-=T
     set guioptions-=c
     set guioptions-=m
-    set guifont=Monaco\ for\ Powerline:h14,Monaco:h14
+    set guifont=Monaco\ for\ Powerline:h15,Monaco:h15
 endif
 
 if exists('+breakindent')
