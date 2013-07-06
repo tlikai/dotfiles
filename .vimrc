@@ -1,99 +1,86 @@
-set nocompatible
-
-" vundle configure
 if (has("win32") || has("win64"))
     let $HOME=$USERPROFILE
 endif
 let $VIMFILES=$HOME.'/.vim'
+
+filetype off
 set rtp+=$VIMFILES/bundle/vundle/
 call vundle#rc()
 
-" require
+" Bundles {{{
+" Basic {{{
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'L9'
-
-" complete
+" }}}
+" Complete {{{
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
-Bundle 'ZenCoding.vim'
+Bundle 'mattn/zencoding-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
-
-" other
 Bundle 'godlygeek/tabular'
-Bundle 'rosenfeld/conque-term'
-Bundle 'taglist.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'matchit.zip'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'Yggdroot/indentLine'
-
-" file
+" }}}
+" File Manager {{{
 Bundle 'scrooloose/nerdtree'
-"Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mru.vim'
-
-" syntax
+" }}}
+" Syntax {{{
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/phpvim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/syntastic'
-
-" colorscheme
+Bundle 'markwu/vim-laravel4-snippets'
+Bundle 'xsbeats/vim-blade'
+" }}}
+" Colorscheme {{{
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'tango.vim'
+" }}}
+" Misc {{{
+Bundle 'taglist.vim'
+Bundle 'rosenfeld/conque-term'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'matchit.zip'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'Yggdroot/indentLine'
+Bundle 'scrooloose/syntastic'
+Bundle 'stephpy/vim-php-cs-fixer'
+" }}}
+" }}}
 
-" global
+" Basic {{{
+syntax on
 filetype on
 filetype plugin indent on
-syntax on
-set number
-set numberwidth=4
-set title
-set hidden
-set nostartofline
-set scrolljump=10
-set foldenable
-set backspace=indent,eol,start
-set mouse=a
-set showmatch
-set autochdir
-set autoread
-set laststatus=2
-"set relativenumber
-set ruler
-set showcmd
-set cursorline
-set sidescrolloff=20
-"set pumheight=10
-set clipboard=unnamed
 
-" ime
-"set noimdisable
-set iminsert=0
-set imsearch=0
+set nocompatible
+set wildmenu
+set ttyfast
+" }}}
 
-" search
-set magic
-set incsearch
-set ignorecase
-set nohlsearch
-set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
-set noerrorbells
-set matchpairs+=<:>
-
-" tab
+" Editing {{{
+set cursorline  " highlight current line
+" Encoding {{{
+set encoding=utf-8 nobomb
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,gbk,gb2312
+set langmenu=zh_CN.utf-8
+language message zh_CN.utf-8
+" }}}
+" Line feed {{{
+set fileformat=unix
+set fileformats=unix,dos,mac
+" }}}
+" Tab {{{
 set autoindent
 set cindent
 set smartindent
@@ -102,76 +89,113 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-
-" misc
+" }}}
+" Match {{{
+set magic
+set incsearch
+set ignorecase
+set nohlsearch
+set matchpairs+=<:>
+" }}}
+" Ime {{{
+"set noimdisable
+set iminsert=0
+set imsearch=0
+" }}}
+" Folding {{{
+set foldenable  " default enable fold
+set foldmethod=marker   " fold by marker
+" }}}
+" Misc {{{
+set nostartofline
+set showmatch   " show matching parenthesis
+set mouse=a " enable mouse for all mode
+set clipboard=unnamed   " share system clipboard 
+set pumheight=15    " popup menu height
+set backspace=indent,eol,start
 set history=1000
 set undolevels=1000
 set nobackup
 set noswapfile
+set autoread
+set modeline
+set modelines=4
+" }}}
+" }}}
 
-" encoding
-set enc=utf-8
-set termencoding=utf-8
-set fenc=utf-8
-set fencs=utf-8,gbk,gb2312
-set langmenu=zh_CN.utf-8
-language message zh_CN.utf-8
+" Layout {{{
+set title
+set hidden
+set showcmd
+set laststatus=2
+set ruler " show cursor line and column in the status line
+set number
+" }}}
 
-" fileformat
-set fileformat=unix
-set fileformats=unix,dos,mac
+" Misc {{{
+set noerrorbells
+set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
+" }}}
 
-" font and theme
+" Style {{{
 set t_Co=256
 set linespace=4
 set background=dark
 colorscheme solarized
-
 if has('gui_running')
+    set clipboard=
     set background=light
     set guioptions-=T
     set guioptions-=c
     set guioptions-=m
     set guifont=Monaco\ for\ Powerline:h15,Monaco:h15
 endif
+" }}}
 
-if exists('+breakindent')
-    set breakindent
-endif
-
-" maps
+" Maps {{{
 let mapleader = ','
-noremap <leader>. :NERDTreeToggle<CR>
-noremap <leader>t :TlistToggle<CR>
-noremap <leader>h :MRU<CR>
-noremap <leader>f :CommandT<CR>
 noremap <leader>rc :e $MYVIMRC<CR>
 noremap <leader>rrc :source $MYVIMRC<CR>
-noremap <leader>sh :ConqueTermSplit bash<CR>
 noremap <leader>ct :!ctags_php .<CR>
 noremap <leader>cs :noh<CR>
 noremap <leader>ss :%s/\s\+$//e<CR>
 noremap <leader>W :w !sudo tee %<CR>
 noremap <C-Q> <C-V>
+" }}}
 
-" Plugin configure
+" Helper {{{
+" Auto load template on new file
+autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
+autocmd BufNewFile *.html  0r $VIMFILES/template/template.html
 
-" NERDTree
+" Compiler
+autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
+" }}}
+
+" Plugin Configuration {{{
+" nerdtree {{{
 let NERDTreeShowHidden=0
 let g:NERDTreeChristmasTree=1
 let g:NERDTreeCaseSensitiveSort=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos='left'
 let g:NERDTreeWinSize=40
-let g:NERDTreeChDirMode=2
+let g:NERDTreeChDirMode=1
 
-" ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+noremap <leader>. :NERDTreeToggle<CR>
+" }}}
+" ctrlp {{{
 let g:ctrlp_map = '<C-P>'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = 'find %s -type f'
-
-" Zencoding
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+\   'dir' : '\v[\/]\.(git|hg|svn)$',
+\   'file' : '\v\.(exe|so|dll)$',
+\   'link' : 'SOME_BAD_SYMBOLIC_LINKS'
+\}
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f'] 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" }}}
+" zencoding-vim {{{
 let g:user_zen_settings={
 \    'php' : {
 \        'extends' : 'html'
@@ -179,11 +203,11 @@ let g:user_zen_settings={
 \    'lang' : 'zh',
 \    'charset' : 'utf-8'
 \}
-
-" powerline
+" }}}
+" vim-powerline {{{
 let g:Powerline_symbols='fancy'
-
-" autocomplete
+" }}}
+" neocomplcache {{{
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_min_syntax_length=3
@@ -192,16 +216,18 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-
-" taglist
-set tags=$HOME/.tags
+" }}}
+" taglist {{{
+set tags+=$HOME/.tags
 set tags+=$PWD/tags
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_Auto_Update = 1
 
-" neosnippet
+noremap <leader>t :TlistToggle<CR>
+" }}}
+" neosnippet {{{
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -209,15 +235,22 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-" vim-javascript
+" }}}
+" vim-javascript {{{
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-" load template
-autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
-autocmd BufNewFile *.html  0r $VIMFILES/template/template.html
-
-" compiler
-autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
+" }}}
+" mru {{{
+noremap <leader>h :MRU<CR>
+" }}}
+" vim-php-cs-fixer {{{
+let g:php_cs_fixer_level = "all"                  " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_fixers_list = ""               " List of fixers
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0
+" }}}
+" }}}
