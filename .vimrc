@@ -218,9 +218,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 " }}}
-" taglist {{{
+" tags and taglist {{{
 set tags+=$HOME/.tags
-set tags+=$PWD/tags
+set tags+=$PWD/.tags
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
