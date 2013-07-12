@@ -5,7 +5,7 @@ if [ "$path" == "" ]; then
     path=`pwd`
 fi
 
-output='.tags.'
+output='.ctags'
 
 case $1 in
     php)
