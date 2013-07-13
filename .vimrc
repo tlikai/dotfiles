@@ -24,6 +24,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'aperezdc/vim-template'
+Bundle 'Townk/vim-autoclose'
 " }}}
 " File Manager {{{
 Bundle 'scrooloose/nerdtree'
