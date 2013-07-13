@@ -166,10 +166,6 @@ noremap <C-Q> <C-V>
 " }}}
 
 " Helper {{{
-" Auto load template on new file
-autocmd BufNewFile *.php  0r $VIMFILES/template/template.php
-autocmd BufNewFile *.html  0r $VIMFILES/template/template.html
-
 " Compiler
 autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
 " }}}
@@ -270,5 +266,9 @@ let g:php_cs_fixer_fixers_list = ""               " List of fixers
 let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0
+" }}}
+" vim-template {{{
+let g:username = "likai"
+let g:email = "youyuge@gmail.com"
 " }}}
 " }}}
