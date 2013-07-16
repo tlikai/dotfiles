@@ -216,8 +216,8 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 " }}}
 " tags and taglist {{{
-set tags+=$HOME/.tags
-set tags+=$PWD/.tags
+set tags+=$HOME/.ctags
+set tags+=$PWD/.ctags
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
