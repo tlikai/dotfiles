@@ -25,7 +25,6 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'aperezdc/vim-template'
-Bundle 'Townk/vim-autoclose'
 " }}}
 " File Manager {{{
 Bundle 'scrooloose/nerdtree'
@@ -123,6 +122,7 @@ set noswapfile
 set autoread
 set modeline
 set modelines=4
+set autochdir
 " }}}
 " }}}
 
