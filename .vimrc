@@ -11,7 +11,7 @@ call vundle#rc()
 " Basic {{{
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'airblade/vim-gitgutter'
 Bundle 'L9'
 " }}}
 " Complete {{{
@@ -24,7 +24,6 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
-Bundle 'aperezdc/vim-template'
 " }}}
 " File Manager {{{
 Bundle 'scrooloose/nerdtree'
@@ -33,10 +32,11 @@ Bundle 'mru.vim'
 " }}}
 " Syntax {{{
 Bundle 'groenewege/vim-less'
-Bundle 'tpope/vim-markdown'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'vim-scripts/phpvim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'markwu/vim-laravel4-snippets'
 Bundle 'xsbeats/vim-blade'
@@ -44,6 +44,7 @@ Bundle 'xsbeats/vim-blade'
 " Colorscheme {{{
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
 " }}}
 " Misc {{{
 Bundle 'taglist.vim'
@@ -147,11 +148,10 @@ set background=dark
 colorscheme solarized
 if has('gui_running')
     set clipboard=
-    set background=light
     set guioptions-=T
     set guioptions-=c
     set guioptions-=m
-    set guifont=Monaco\ for\ Powerline:h15,Monaco:h15
+    set guifont=Monaco\ for\ Powerline:h12,Monaco:h12
 endif
 " }}}
 
@@ -266,9 +266,5 @@ let g:php_cs_fixer_fixers_list = ""               " List of fixers
 let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0
-" }}}
-" vim-template {{{
-let g:username = "likai"
-let g:email = "youyuge@gmail.com"
 " }}}
 " }}}
