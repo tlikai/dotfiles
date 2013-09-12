@@ -33,7 +33,7 @@ Bundle 'mru.vim'
 " Syntax {{{
 Bundle 'groenewege/vim-less'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'vim-scripts/phpvim'
+Bundle 'tlikai/phpvim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'othree/javascript-libraries-syntax.vim'
