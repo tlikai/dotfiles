@@ -20,7 +20,7 @@ Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
@@ -192,15 +192,6 @@ let g:ctrlp_custom_ignore = {
 \}
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f'] 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-" }}}
-" zencoding-vim {{{
-let g:user_zen_settings={
-\    'php' : {
-\        'extends' : 'html'
-\    },
-\    'lang' : 'zh',
-\    'charset' : 'utf-8'
-\}
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols='fancy'
