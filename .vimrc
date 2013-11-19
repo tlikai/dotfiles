@@ -24,6 +24,7 @@ Bundle 'godlygeek/tabular'
 " File manager
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'mru.vim'
 
 " Syntax
@@ -41,6 +42,7 @@ Bundle 'xsbeats/vim-blade'
 Bundle 'altercation/vim-colors-solarized'
 
 " Misc
+Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
 Bundle 'taglist.vim'
 Bundle 'matchit.zip'
