@@ -20,6 +20,8 @@ Bundle 'mattn/emmet-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-rails'
+Bundle 'jiangmiao/auto-pairs'
 
 " File manager
 Bundle 'scrooloose/nerdtree'
@@ -149,6 +151,7 @@ noremap <C-Q> <C-V>
 
 " Helpers
 autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " NERDTree
 let NERDTreeShowHidden=0
@@ -165,6 +168,8 @@ let g:ctrlp_map='<C-P>'
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command=['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching=1
+let g:ctrlp_clear_cache_on_exit=0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Airline
@@ -231,3 +236,6 @@ let g:php_cs_fixer_fixers_list=""               " List of fixers
 let g:php_cs_fixer_enable_default_mapping=1     " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run=0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose=0
+
+" Ack
+let g:ackprg='ag --nogroup --nocolor --column'
