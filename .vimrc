@@ -109,6 +109,7 @@ set ruler
 set number
 
 " Misc
+set noerrorbells visualbell t_vb=
 set nostartofline
 set showmatch
 set mouse=a
