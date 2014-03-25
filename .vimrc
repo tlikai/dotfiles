@@ -169,8 +169,6 @@ autocmd FileType ruby,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Style
 set t_Co=256
 set linespace=4
-set background=dark
-colorscheme solarized
 if has('gui_running')
     set guifont=Monaco\ for\ Powerline:h15,Monaco:h15
     set clipboard=
@@ -178,6 +176,11 @@ if has('gui_running')
     set guioptions-=c
     set guioptions-=m
 endif
+
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
+set background=dark
+colorscheme solarized
 
 " Keyboard Maps
 let mapleader=','
@@ -326,4 +329,3 @@ let g:php_cs_fixer_fixers_list="short_tag,return,linefeed,indentation,trailing_s
 let g:php_cs_fixer_enable_default_mapping=1
 let g:php_cs_fixer_dry_run=0
 let g:php_cs_fixer_verbose=0
-

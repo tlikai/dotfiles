@@ -2,7 +2,7 @@
 
 DEFAULT_USER='likai'
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster"
+ZSH_THEME="lambda"
 CASE_SENSITIVE="false"
 plugins=(osx git git-flow github gitignore brew ruby gem rails bundler cake npm composer laravel phpunit vagrant)
 
