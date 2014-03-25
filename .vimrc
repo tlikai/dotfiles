@@ -1,66 +1,93 @@
 set nocompatible
 
-filetype off
-let $VIMFILES=$HOME.'/.vim'
-set rtp+=$VIMFILES/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-Bundle 'L9'
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" AutoCompole
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
-Bundle 'mattn/emmet-vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-rails'
-Bundle 'jiangmiao/auto-pairs'
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Fuzzy search
+NeoBundle 'rking/ag.vim'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-help'
+NeoBundle 'Shougo/unite-session'
+NeoBundle 'Shougo/neomru.vim'
 
 " File manager
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'mru.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'scrooloose/nerdtree'
 
-" Syntax
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'tlikai/phpvim'
-Bundle 'othree/html5.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'markwu/vim-laravel4-snippets'
-Bundle 'xsbeats/vim-blade'
+" Code completion
+NeoBundle'Shougo/neocomplcache'
+" NeoBundle 'Valloric/YouCompleteMe'
 
-" Colorscheme
-Bundle 'altercation/vim-colors-solarized'
+" Snippets
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'sirver/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
+" Comments
+NeoBundle 'scrooloose/nerdcommenter'
+
+" Indent
+NeoBundle 'Yggdroot/indentLine'
+" NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" Syntax checker
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+" Syntax & Language
+NeoBundle 'tlikai/phpvim'
+NeoBundle 'xsbeats/vim-blade'
+NeoBundle 'markwu/vim-laravel4-snippets'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'suan/vim-instant-markdown'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'psykidellic/vim-jekyll'
+NeoBundle 'Chiel92/vim-autoformat'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+
+" Colorschemes
+NeoBundle 'modess/vim-phpcolors'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'zenorocha/dracula-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+
+" Motions & Cursor
+NeoBundle 'goldfeld/vim-seek'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 " Misc
-Bundle 'Shougo/unite.vim'
-Bundle 'bling/vim-airline'
-Bundle 'taglist.vim'
-Bundle 'matchit.zip'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'Yggdroot/indentLine'
-Bundle 'terryma/vim-expand-region'
-Bundle 'terryma/vim-multiple-cursors'
+NeoBundle 'taglist.vim'
+NeoBundle 'matchit.zip'
+NeoBundle 'sickill/vim-pasta'
+NeoBundle 'bling/vim-airline' " status line
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'thinca/vim-quickrun'
 
 " Basic
 syntax on
 filetype on
 filetype plugin indent on
-set nocompatible
-set wildmenu
 set ttyfast
 
 " Editing & Encoding
@@ -109,7 +136,6 @@ set ruler
 set number
 
 " Misc
-set noerrorbells visualbell t_vb=
 set nostartofline
 set showmatch
 set mouse=a
@@ -124,9 +150,21 @@ set autoread
 set modeline
 set modelines=4
 set autochdir
+set completeopt=longest,menuone
+set noerrorbells visualbell t_vb=
 
-set noerrorbells
-set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
+set wildmenu "turn on wild menu
+" set wildmode=list:longest,full
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*DS_Store*
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
+set wildignore+=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
+set wildignore+=*/.nx/**,*.app
+
+autocmd FileType ruby,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Style
 set t_Co=256
@@ -134,7 +172,7 @@ set linespace=4
 set background=dark
 colorscheme solarized
 if has('gui_running')
-    set guifont=Monaco\ for\ Powerline:h12,Monaco:h12
+    set guifont=Monaco\ for\ Powerline:h15,Monaco:h15
     set clipboard=
     set guioptions-=T
     set guioptions-=c
@@ -144,15 +182,10 @@ endif
 " Keyboard Maps
 let mapleader=','
 noremap <leader>rc :e $MYVIMRC<CR>
-noremap <leader>rrc :source $MYVIMRC<CR>
 noremap <leader>cs :noh<CR>
 noremap <leader>ss :%s/\s\+$//e<CR>
 noremap <leader>W :w !sudo tee %<CR>
 noremap <C-Q> <C-V>
-
-" Helpers
-autocmd FileType c nmap <leader><leader>r :!cc -o "%:p:r" "%:p" && "%:p:r"<CR>
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " NERDTree
 let NERDTreeShowHidden=0
@@ -160,7 +193,6 @@ let g:NERDTreeChristmasTree=1
 let g:NERDTreeCaseSensitiveSort=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos='left'
-let g:NERDTreeWinSize=40
 let g:NERDTreeChDirMode=1
 noremap <leader>. :NERDTreeToggle<CR>
 
@@ -171,20 +203,77 @@ let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command=['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=0
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Airline
 let g:airline_powerline_fonts=1
 
 " NeoComplcache
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_syntax_length=3
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Enable heavy features.
+" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+"let g:neocomplcache_enable_underbar_completion = 1
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Tags & Taglist
 set tags+=$HOME/.ctags
@@ -200,7 +289,7 @@ noremap <leader>t :TlistToggle<CR>
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -218,8 +307,8 @@ endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility=1
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory=$VIMFILES.'/bundle/vim-snippets/snippets'
-let g:snips_author=''
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:snips_author='likai'
 
 " vim-javascript
 let g:html_indent_inctags="html,body,head,tbody"
@@ -227,16 +316,14 @@ let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
 
 " mru
-noremap <leader>h :MRU<CR>
+noremap <leader>h :Unite file_mru<CR>
 
 " vim-php-cs-fixer
-let g:php_cs_fixer_level="all"                  " which level ?
-let g:php_cs_fixer_config="default"             " configuration
-let g:php_cs_fixer_php_path="php"               " Path to PHP
-let g:php_cs_fixer_fixers_list=""               " List of fixers
-let g:php_cs_fixer_enable_default_mapping=1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run=0                    " Call command with dry-run option
+let g:php_cs_fixer_level="psr2"
+let g:php_cs_fixer_config="default"
+let g:php_cs_fixer_php_path="php"
+let g:php_cs_fixer_fixers_list="short_tag,return,linefeed,indentation,trailing_spaces,visibility,php_closing_tag,braces,extra_empty_lines,eof_ending"
+let g:php_cs_fixer_enable_default_mapping=1
+let g:php_cs_fixer_dry_run=0
 let g:php_cs_fixer_verbose=0
 
-" Ack
-let g:ackprg='ag --nogroup --nocolor --column'
