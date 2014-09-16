@@ -47,9 +47,12 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'bronson/vim-trailing-whitespace'
 
 " Syntax & Language
-NeoBundle 'tlikai/phpvim'
+NeoBundle 'StanAngeloff/php.vim'
+NeoBundle 'shawncplus/phpcomplete.vim'
+"NeoBundle 'm2mdas/phpcomplete-extended'
+"NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+NeoBundle 'arnaud-lb/vim-php-namespace'
 NeoBundle 'xsbeats/vim-blade'
-NeoBundle 'markwu/vim-laravel4-snippets'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -79,7 +82,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
 " Misc
 NeoBundle 'taglist.vim'
 NeoBundle 'matchit.zip'
-NeoBundle 'bling/vim-airline' " status line
+NeoBundle 'bling/vim-airline'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-dispatch'
@@ -335,3 +338,14 @@ let g:php_cs_fixer_fixers_list="short_tag,return,linefeed,indentation,trailing_s
 let g:php_cs_fixer_enable_default_mapping=1
 let g:php_cs_fixer_dry_run=0
 let g:php_cs_fixer_verbose=0
+
+" php.vim
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
