@@ -9,6 +9,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'tpope/vim-fugitive'
+
 " Fuzzy search
 NeoBundle 'rking/ag.vim'
 NeoBundle 'kien/ctrlp.vim'
@@ -50,8 +52,8 @@ NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'markwu/vim-laravel4-snippets'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'groenewege/vim-less'
-" NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'plasticboy/vim-markdown'
@@ -77,13 +79,15 @@ NeoBundle 'terryma/vim-multiple-cursors'
 " Misc
 NeoBundle 'taglist.vim'
 NeoBundle 'matchit.zip'
-NeoBundle 'sickill/vim-pasta'
 NeoBundle 'bling/vim-airline' " status line
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'sickill/vim-pasta'
 
 " Basic
 syntax on
@@ -116,7 +120,6 @@ set expandtab
 set magic
 set incsearch
 set ignorecase
-set nohlsearch
 set matchpairs+=<:>
 
 " Ime
@@ -166,6 +169,7 @@ set wildignore+=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
 set wildignore+=*/.nx/**,*.app
 
 autocmd FileType ruby,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json set ft=javascript
 
 " Style
 set t_Co=256
@@ -269,6 +273,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType tpl setfiletype html
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -315,9 +320,9 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:snips_author='likai'
 
 " vim-javascript
-let g:html_indent_inctags="html,body,head,tbody"
-let g:html_indent_script1="inc"
-let g:html_indent_style1="inc"
+let javascript_enable_domhtmlcss=1
+let delimitMate_matchpairs = "(:),[:],{:}"
+au FileType xml,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 
 " mru
 noremap <leader>h :Unite file_mru<CR>
