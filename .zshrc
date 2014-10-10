@@ -10,3 +10,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:
 
 source $HOME/.initrc
 source $ZSH/oh-my-zsh.sh
+
+eval "$(rbenv init -)"
