@@ -40,7 +40,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 
 " Indent
 NeoBundle 'Yggdroot/indentLine'
-" NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " Syntax checker
 NeoBundle 'scrooloose/syntastic'
@@ -63,9 +62,11 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'suan/vim-instant-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-bundler'
 NeoBundle 'psykidellic/vim-jekyll'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'stephpy/vim-php-cs-fixer'
+NeoBundle 'elzr/vim-json'
 
 " Colorschemes
 NeoBundle 'modess/vim-phpcolors'
@@ -82,7 +83,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 " Misc
 NeoBundle 'taglist.vim'
 NeoBundle 'matchit.zip'
-NeoBundle 'bling/vim-airline'
+"NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-dispatch'
@@ -90,6 +92,8 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'sjl/gundo.vim'
 " NeoBundle 'sickill/vim-pasta'
 
 " Basic
@@ -172,7 +176,6 @@ set wildignore+=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
 set wildignore+=*/.nx/**,*.app
 
 autocmd FileType ruby,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType json set ft=javascript
 
 " Style
 set t_Co=256
@@ -206,6 +209,10 @@ let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos='left'
 let g:NERDTreeChDirMode=1
 noremap <leader>. :NERDTreeToggle<CR>
+
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:nerdtree_tabs_open_on_new_tab=0
+
 
 " CtrlP
 let g:ctrlp_map='<C-P>'
