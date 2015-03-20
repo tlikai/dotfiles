@@ -4,7 +4,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -43,6 +43,7 @@ NeoBundle 'Yggdroot/indentLine'
 
 " Syntax checker
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'bronson/vim-trailing-whitespace'
 
 " Syntax & Language
@@ -95,6 +96,8 @@ NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'sjl/gundo.vim'
 " NeoBundle 'sickill/vim-pasta'
+
+call neobundle#end()
 
 " Basic
 syntax on
@@ -175,7 +178,7 @@ set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/*
 set wildignore+=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
 set wildignore+=*/.nx/**,*.app
 
-autocmd FileType ruby,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby,eruby,coffee,yaml,scss,less setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Style
 set t_Co=256
@@ -247,7 +250,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+\ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
