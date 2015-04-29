@@ -19,6 +19,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-session'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'mileszs/ack.vim'
 
 " File manager
 NeoBundle 'Shougo/vimfiler.vim'
