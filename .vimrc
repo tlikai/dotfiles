@@ -1,8 +1,5 @@
 set nocompatible
-
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -13,28 +10,23 @@ NeoBundle 'tpope/vim-fugitive'
 
 " Fuzzy search
 NeoBundle 'rking/ag.vim'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-session'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'mileszs/ack.vim'
 
 " File manager
-NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'scrooloose/nerdtree'
 
 " Code completion
-NeoBundle'Shougo/neocomplcache'
-" NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Shougo/neocomplete'
 
 " Snippets
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'mattn/emmet-vim'
-" NeoBundle 'sirver/ultisnips'
+NeoBundle 'sirver/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'mattn/emmet-vim'
 
 " Comments
 NeoBundle 'scrooloose/nerdcommenter'
@@ -65,6 +57,8 @@ NeoBundle 'suan/vim-instant-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'psykidellic/vim-jekyll'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'stephpy/vim-php-cs-fixer'
@@ -84,9 +78,9 @@ NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " Misc
-NeoBundle 'taglist.vim'
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
-"NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-surround'
@@ -97,6 +91,7 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'wannesm/wmgraphviz.vim'
 " NeoBundle 'sickill/vim-pasta'
 
 call neobundle#end()
@@ -165,20 +160,22 @@ set noswapfile
 set autoread
 set modeline
 set modelines=4
-set autochdir
+" set autochdir
 set completeopt=longest,menuone
 set noerrorbells visualbell t_vb=
 
-set wildmenu "turn on wild menu
-" set wildmode=list:longest,full
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildmode=list:longest
+set wildmenu " turn on wild menu
+set wildignore=*.o,*.obj,*~ " stuff to ignore when tab completing
+set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*DS_Store*
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
 set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp
-set wildignore+=*/.nx/**,*.app
 
 autocmd FileType ruby,eruby,coffee,yaml,scss,less setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
@@ -206,6 +203,11 @@ noremap <leader>ss :%s/\s\+$//e<CR>
 noremap <leader>W :w !sudo tee %<CR>
 noremap <C-Q> <C-V>
 
+" Ag
+set grepprg=ag\ --nogroup
+let g:ag_prg='ag --nogroup --nocolor --column'
+let g:ag_working_path_mode='r'
+
 " NERDTree
 let NERDTreeShowHidden=0
 let g:NERDTreeChristmasTree=1
@@ -218,68 +220,35 @@ noremap <leader>. :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
 
-
 " CtrlP
 let g:ctrlp_map='<C-P>'
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command=['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_use_caching=1
-let g:ctrlp_clear_cache_on_exit=0
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = 'ag %s -l -S -U --nocolor --ignore-dir=images -g ""'
+let g:ctrlp_use_caching = 0
 
 " Airline
 let g:airline_powerline_fonts=1
 
-" NeoComplcache
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Enable heavy features.
-" Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-"let g:neocomplcache_enable_underbar_completion = 1
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-\ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
+" neocomplete
+let g:neocomplete#enable_at_startup=1
+let g:neocomplete#enable_smart_case=1
+let g:neocomplete#sources#syntax#min_keyword_length=2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -288,59 +257,26 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType tpl setfiletype html
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#CompleteRuby
 
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" Tags & Taglist
-set tags+=$HOME/.ctags
-set tags+=$PWD/.ctags
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Update=1
-
-noremap <leader>t :TlistToggle<CR>
-
-" Neosnippet
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility=1
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-let g:snips_author='likai'
+let g:neocomplete#sources#omni#input_patterns.ruby='[^. *\t]\.\w*\|\h\w*::'
+
+" Tagbar
+noremap <leader>t :TagbarToggle<CR>
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " vim-javascript
 let javascript_enable_domhtmlcss=1
 let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType xml,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-
-" mru
-noremap <leader>h :Unite file_mru<CR>
 
 " vim-php-cs-fixer
 let g:php_cs_fixer_level="psr2"
@@ -350,6 +286,9 @@ let g:php_cs_fixer_fixers_list="short_tag,return,linefeed,indentation,trailing_s
 let g:php_cs_fixer_enable_default_mapping=1
 let g:php_cs_fixer_dry_run=0
 let g:php_cs_fixer_verbose=0
+
+" mru
+noremap <leader>h :Unite file_mru<CR>
 
 " php.vim
 function! PhpSyntaxOverride()
