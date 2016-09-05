@@ -64,6 +64,7 @@ NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'rust-lang/rust.vim'
 
 " Colorschemes
 NeoBundle 'modess/vim-phpcolors'
