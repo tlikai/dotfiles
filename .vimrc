@@ -224,10 +224,9 @@ let g:nerdtree_tabs_open_on_new_tab=0
 " CtrlP
 let g:ctrlp_map='<C-P>'
 let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_user_command = 'ag %s -l -S -U --nocolor --ignore-dir=images -g ""'
-let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore='\v[\/](node_modules|images|target|tmp)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_user_command='ag %s --skip-vcs-ignores --smart-case --files-with-matches --ignore=images --ignore=node_modules --ignore=target --ignore=tmp -g ""'
+let g:ctrlp_use_caching=0
 
 " Airline
 let g:airline_powerline_fonts=1
@@ -301,3 +300,6 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+" Ruby rubocop
+let g:syntastic_ruby_rubocop_exec="/usr/local/bin/rubocop-wrapper.sh"
