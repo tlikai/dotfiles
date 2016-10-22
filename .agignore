@@ -1,0 +1,11 @@
+tmp
+logs
+images
+vendor
+node_modules
+target
+bower_components
+.git
+.svn
+*.tmp
+*.log
