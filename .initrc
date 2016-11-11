@@ -16,4 +16,5 @@ if [ -d $HOME/.dircolors ]; then
     alias ls='ls --color -hF'
 fi
 
+source $HOME/.proxyrc
 source $HOME/.aliases

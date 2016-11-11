@@ -1,0 +1,7 @@
+function proxy_on() {
+    export all_proxy="http://127.0.0.1:8087"
+}
+
+function proxy_off() {
+    unset all_proxy
+}
