@@ -1,6 +1,9 @@
+[core]
+	excludesfile = /Users/likai/.gitignore
+
 [user]
-	name = likai
-	email = youyuge@gmail.com
+    name = likai
+    email = youyuge@gmail.com
 
 [color]
     ui = auto
@@ -16,3 +19,4 @@
 
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    up = pull --rebase --autostash
