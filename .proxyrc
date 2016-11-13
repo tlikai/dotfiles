@@ -1,5 +1,11 @@
+function proxy() {
+    export all_proxy="http://127.0.0.1:1087"
+    $@
+    unset all_proxy
+}
+
 function proxy_on() {
-    export all_proxy="http://127.0.0.1:8087"
+    export all_proxy="http://127.0.0.1:1087"
 }
 
 function proxy_off() {
