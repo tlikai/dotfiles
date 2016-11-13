@@ -1,3 +1,7 @@
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
+
+alias ip="curl ip.gs"
+alias localip="ipconfig getifaddr en0"
+alias path='echo -e ${PATH//:/\\n}'
