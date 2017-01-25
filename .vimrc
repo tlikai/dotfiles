@@ -1,5 +1,6 @@
 set nocompatible
 set runtimepath^=~/.vim/bundle/neobundle.vim/
+set rtp+=/usr/local/opt/fzf
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
