@@ -1,7 +1,7 @@
 function proxy() {
-    export all_proxy="http://127.0.0.1:1087"
+    proxy_on
     $@
-    unset all_proxy
+    proxy_off
 }
 
 function proxy_on() {
