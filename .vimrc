@@ -1,102 +1,99 @@
 set nocompatible
-set runtimepath^=~/.vim/bundle/neobundle.vim/
-set rtp+=/usr/local/opt/fzf
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call plug#begin('~/.vim/plugged')
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Fuzzy search
-NeoBundle 'rking/ag.vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'Shougo/neomru.vim'
+Plug 'rking/ag.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " File manager
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Code completion
-NeoBundle 'Shougo/neocomplete'
+Plug 'Shougo/neocomplete'
 
 " Snippets
-NeoBundle 'sirver/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 
 " Comments
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Indent
-NeoBundle 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
+Plug 'editorconfig/editorconfig-vim'
 
-" Syntax checker
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'ngmy/vim-rubocop'
-NeoBundle 'bronson/vim-trailing-whitespace'
+" Linter
+Plug 'scrooloose/syntastic'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Syntax & Language
-NeoBundle 'StanAngeloff/php.vim'
-NeoBundle 'shawncplus/phpcomplete.vim'
-"NeoBundle 'm2mdas/phpcomplete-extended'
-"NeoBundle 'm2mdas/phpcomplete-extended-laravel'
-NeoBundle 'arnaud-lb/vim-php-namespace'
-NeoBundle 'xsbeats/vim-blade'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'suan/vim-instant-markdown'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'psykidellic/vim-jekyll'
-NeoBundle 'Chiel92/vim-autoformat'
-NeoBundle 'stephpy/vim-php-cs-fixer'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'rust-lang/rust.vim'
+Plug 'StanAngeloff/php.vim'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'stephpy/vim-php-cs-fixer'
+
+Plug 'elzr/vim-json'
+Plug 'xsbeats/vim-blade'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
+Plug 'kchmck/vim-coffee-script'
+Plug 'othree/javascript-libraries-syntax.vim'
+
+Plug 'plasticboy/vim-markdown'
+
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+Plug 'ecomba/vim-ruby-refactoring'
+
+Plug 'janko-m/vim-test'
+Plug 'psykidellic/vim-jekyll'
+Plug 'Chiel92/vim-autoformat'
+Plug 'rust-lang/rust.vim'
 
 " Colorschemes
-NeoBundle 'modess/vim-phpcolors'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'zenorocha/dracula-theme'
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
 
 " Motions & Cursor
-NeoBundle 'goldfeld/vim-seek'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'terryma/vim-multiple-cursors'
+Plug 'goldfeld/vim-seek'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'haya14busa/incsearch.vim'
 
 " Misc
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'matchit.zip'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'amirh/HTML-AutoCloseTag'
-NeoBundle 'myusuf3/numbers.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'wannesm/wmgraphviz.vim'
-" NeoBundle 'sickill/vim-pasta'
+Plug 'majutsushi/tagbar'
+Plug 'matchit.zip'
+Plug 'itchyny/lightline.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dispatch'
+Plug 'Raimondi/delimitMate'
+Plug 'thinca/vim-quickrun'
+Plug 'Shougo/vimshell.vim'
+" Plug 'amirh/HTML-AutoCloseTag'
+Plug 'myusuf3/numbers.vim'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-eunuch'
+" Plug 'sickill/vim-pasta'
 
-call neobundle#end()
+call plug#end()
 
 " Basic
 syntax on
@@ -111,7 +108,7 @@ set fileformats=unix,dos,mac
 set encoding=utf-8 nobomb
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,gbk,gb2312
+set fileencodings=utf-8
 set langmenu=zh_CN.utf-8
 language message zh_CN.utf-8
 
@@ -153,6 +150,7 @@ set nostartofline
 set showmatch
 set mouse=a
 set clipboard=unnamed
+"set clipboard+=unnamedplus
 set pumheight=15
 set backspace=indent,eol,start
 set history=1000
@@ -192,14 +190,20 @@ if has('gui_running')
     set guioptions-=m
 endif
 
+if has("termguicolors")
+    set termguicolors
+endif
+
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme onedark
 
 " Keyboard Maps
 let mapleader=','
 noremap <leader>rc :e $MYVIMRC<CR>
+noremap <leader>rrc :source $MYVIMRC<CR>
 noremap <leader>cs :noh<CR>
 noremap <leader>ss :%s/\s\+$//e<CR>
 noremap <leader>W :w !sudo tee %<CR>
@@ -222,29 +226,42 @@ noremap <leader>. :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
 
-" CtrlP
-let g:ctrlp_map='<C-P>'
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_custom_ignore='\v[\/](node_modules|images|target|tmp)|(\.(swp|ico|git|svn))$'
-let g:ctrlp_user_command='ag %s --skip-vcs-ignores --smart-case --files-with-matches --ignore=images --ignore=node_modules --ignore=target --ignore=tmp -g ""'
-let g:ctrlp_use_caching=0
+" onedark
+let g:onedark_terminal_italics=1
 
-" Airline
-let g:airline_powerline_fonts=1
+" lightline
+let g:lightline = { 'colorscheme': 'onedark' }
+
+" FZF
+map <C-P> :Files<CR>
 
 " neocomplete
 let g:neocomplete#enable_at_startup=1
 let g:neocomplete#enable_smart_case=1
 let g:neocomplete#sources#syntax#min_keyword_length=2
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+
 function! s:my_cr_function()
   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -273,6 +290,7 @@ noremap <leader>t :TagbarToggle<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 " vim-javascript
 let javascript_enable_domhtmlcss=1
@@ -304,3 +322,16 @@ augroup END
 
 " Ruby rubocop
 let g:syntastic_ruby_rubocop_exec="/usr/local/bin/rubocop-wrapper.sh"
+
+" vim-test
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>ll :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
